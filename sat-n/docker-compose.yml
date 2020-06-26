@@ -1,0 +1,15 @@
+version: "2"
+services:
+  node:
+    image: "node:dubnium-alpine"
+    user: "node"
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./:/home/node/app
+    expose:
+      - "9001"
+    ports:
+    - "9001:3000"
+    command: "node index.js"

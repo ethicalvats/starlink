@@ -1,0 +1,12 @@
+version: '2'
+services:
+  webapp:
+    image: yobasystems/alpine-nginx
+    environment:
+      URL: localhost
+    expose:
+      - "80"
+    ports:
+      - "9000:80"
+    volumes:
+      - ./:/etc/nginx/html
