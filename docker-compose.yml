@@ -1,0 +1,85 @@
+version: "2"
+
+services:
+  go:
+    build:
+      context: ./sat-go
+      dockerfile: Dockerfile
+    expose:
+      - "8080"
+    ports:
+      - "9005:8080"
+
+  js:
+    image: yobasystems/alpine-nginx
+    environment:
+      URL: localhost
+    expose:
+      - "80"
+    ports:
+      - "9007:80"
+    volumes:
+      - ./sat-j:/etc/nginx/html
+
+  java:
+    build:
+      context: ./sat-ja
+      dockerfile: Dockerfile
+    ports:
+      - "9003:8080"
+
+  node:
+    image: "node:dubnium-alpine"
+    user: "node"
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./sat-n:/home/node/app
+    expose:
+      - "9001"
+    ports:
+      - "9001:3000"
+    command: "node index.js"
+
+  nginx:
+    build: sat-p/images/nginx
+    command: nginx -g "daemon off;"
+    links:
+      - php
+    ports:
+      - "9006:80"
+    volumes:
+      - ./sat-p/images/php/app/public:/var/www/html/app/public
+
+  php:
+    build: sat-p/images/php
+    volumes:
+      - ./sat-p/images/php:/var/www/html
+    working_dir: /var/www/html/app/public
+    command: php-fpm
+    ports:
+      - "9000:9000"
+
+  python:
+    image: "python:3.7-alpine"
+    working_dir: /home/python/app
+    environment:
+      - FLASK_APP=init.py
+    volumes:
+      - ./sat-py:/home/python/app
+    expose:
+      - "9002"
+    ports:
+      - "9002:5000"
+    command: ash -c "pip install -r requirements.txt && python -m flask run --host=0.0.0.0"
+
+  ruby:
+    build:
+      context: ./sat-r
+      dockerfile: Dockerfile
+    command: ash -c "rm -f tmp/pids/server.pid && bundle install && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    volumes:
+      - ./sat-r:/app
+    ports:
+      - "9004:3000"
