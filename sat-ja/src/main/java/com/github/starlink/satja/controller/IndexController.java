@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@CrossOrigin("http://localhost:9007")
 @RestController
 public class IndexController {
 
-    @CrossOrigin(origins = "http://localhost:9000")
     @GetMapping("/")
     public ResponseEntity<String> index(){
         return new ResponseEntity<>("Affirmative!", HttpStatus.OK);

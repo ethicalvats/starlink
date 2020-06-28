@@ -4,7 +4,7 @@ const port = 3000
 
 app.get('/', (req, res) => {
     res.set({
-        "Access-Control-Allow-Origin": "http://localhost:9000",
+        "Access-Control-Allow-Origin": "http://localhost:9007",
         'Access-Control-Allow-Methods': 'GET'
     })
     return res.send('Affirmative!')
