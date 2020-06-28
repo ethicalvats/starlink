@@ -9,4 +9,4 @@
 - GO
 - PHP/laravel
 
-All microservices are chained using REST API and using Docker containers for single deployment with docker-compose
+`All microservices are inlterlinked via REST API and using Docker containers.`
