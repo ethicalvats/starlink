@@ -15,10 +15,10 @@
 
  R/C |  Javascript | NodeJS | Python | Java | Ruby | GO | PHP
 --- | --- | --- | --- | --- | --- | --- | ---
-Javascript | - | - | - | - | - | - | -
-NodeJS | - | - | - | - | - | - | -
-Python | - | - | - | - | - | - | -
-Java | - | - | - | - | - | - | -
-Ruby | - | - | - | - | - | - | -
-GO | - | - | - | - | - | - | -
-PHP | - | - | - | - | - | - | -
+Javascript | - | Y | Y | Y | Y | Y | Y
+NodeJS | Y | - | - | - | - | - | -
+Python | Y | - | - | - | - | - | -
+Java | Y | - | - | - | - | - | -
+Ruby | Y | - | - | - | - | - | -
+GO | Y | - | - | - | - | - | -
+PHP | Y | - | - | - | - | - | -
