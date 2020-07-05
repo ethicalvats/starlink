@@ -1,8 +1,10 @@
+const buffers = require('./buffers')
 const express = require('express')
 const app = express()
 const port = 3000
 
 app.get('/', (req, res) => {
+    new buffers().init()
     res.set({
         "Access-Control-Allow-Origin": "http://localhost:9007",
         'Access-Control-Allow-Methods': 'GET'

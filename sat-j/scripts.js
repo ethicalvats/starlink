@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", function(){
     fetch('http://localhost:9001')
         .then(res => {
@@ -23,4 +24,6 @@ document.addEventListener("DOMContentLoaded", function(){
         .then(res => {
             console.log("NGINXPHP9006 ::", res.body)
         })
+
+  Buffers()
 });
